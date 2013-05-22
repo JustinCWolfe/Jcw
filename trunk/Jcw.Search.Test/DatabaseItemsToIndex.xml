@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<DatabaseItemsToIndex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ConnectionString>Server=JCW-LP2\SQLEXPRESS;Database=Fino;User ID=JCW-LP2\Jcw;Password=jwolfema2226;Trusted_Connection=True;</ConnectionString>
+  <Items>
+    <DatabaseItemToIndex>
+      <TableName>ObjectAttributeCategory</TableName>
+      <WhereClause/>
+      <Columns>
+        <string>CategCode</string>
+        <string>CategText</string>
+      </Columns>
+    </DatabaseItemToIndex>
+    <DatabaseItemToIndex>
+      <TableName>ObjectAttribute</TableName>
+      <WhereClause/>
+      <Columns>
+        <string>Id</string>
+        <string>AttrCode</string>
+        <string>AttrText</string>
+      </Columns>
+    </DatabaseItemToIndex>
+  </Items>
+</DatabaseItemsToIndex>

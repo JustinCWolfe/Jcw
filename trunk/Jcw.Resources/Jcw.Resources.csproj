@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FC2E3011-A655-466D-BB37-AFE1FE9C0AB8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jcw.Resources</RootNamespace>
+    <AssemblyName>Jcw.Resources</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddHorizontalLine.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddNote.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddVerticalLine.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChartNote.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CircleMarker.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaveRequired.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SquareMarker.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomIn.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomInSelected.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomOut.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomOutSelected.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomReset.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowDown.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowLeft.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowRight.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowUp.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseDisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseHot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClosePressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaximizeDisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaximizeHot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaximizePressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MinimizeDisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MinimizeHot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MinimizePressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RestoreDisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RestoreHot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RestorePressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ForwardButton.png" />
+    <None Include="Resources\BackButton.png" />
+    <Content Include="Resources\Jcw.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{244ACF4C-1FF7-4962-A17D-18684976D9FA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jcw.Charting</RootNamespace>
+    <AssemblyName>Jcw.Charting</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Interfaces\IJcwChartStatistic.cs" />
+    <Compile Include="ChartStatistic.cs" />
+    <Compile Include="Interfaces\IJcwChartDataGroup.cs" />
+    <Compile Include="Interfaces\IJcwChartVectorGroup.cs" />
+    <Compile Include="Interfaces\IJcwChartDockPanelControl.cs" />
+    <Compile Include="Metadata\AxisCoordinate.cs" />
+    <Compile Include="Metadata\ChartMetadata.cs" />
+    <Compile Include="Metadata\CircleMarker.cs" />
+    <Compile Include="Metadata\HorizontalLine.cs" />
+    <Compile Include="Metadata\HorizontalZone.cs" />
+    <Compile Include="Interfaces\IMark.cs" />
+    <Compile Include="Metadata\Line.cs" />
+    <Compile Include="Metadata\Mark.cs" />
+    <Compile Include="Metadata\Note.cs" />
+    <Compile Include="Metadata\VerticalLine.cs" />
+    <Compile Include="Metadata\VerticalZone.cs" />
+    <Compile Include="Metadata\Zone.cs" />
+    <Compile Include="Interfaces\IJcwChartCtl.cs" />
+    <Compile Include="Interfaces\IJcwChartMetadata.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jcw.Common\Jcw.Common.csproj">
+      <Project>{F2587562-E95A-4D1A-AD25-A4592F9F86E7}</Project>
+      <Name>Jcw.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>"%25PROGRAMFILES%25\Microsoft SDKs\Windows\v7.0A\Bin\NETFX 4.0 Tools\sgen.exe"  /d /force /c:/platform:x86 "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

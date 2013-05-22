@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ButterworthFilterCoefficients" targetNamespace="http://tempuri.org/ButterworthFilterCoefficients.xsd" xmlns:mstns="http://tempuri.org/ButterworthFilterCoefficients.xsd" xmlns="http://tempuri.org/ButterworthFilterCoefficients.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ButterworthFilterCoefficients" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ButterworthFilterCoefficients" msprop:Generator_DataSetName="ButterworthFilterCoefficients">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SampleFrequency" msprop:Generator_UserTableName="SampleFrequency" msprop:Generator_RowDeletedName="SampleFrequencyRowDeleted" msprop:Generator_RowChangedName="SampleFrequencyRowChanged" msprop:Generator_RowClassName="SampleFrequencyRow" msprop:Generator_RowChangingName="SampleFrequencyRowChanging" msprop:Generator_RowEvArgName="SampleFrequencyRowChangeEvent" msprop:Generator_RowEvHandlerName="SampleFrequencyRowChangeEventHandler" msprop:Generator_TableClassName="SampleFrequencyDataTable" msprop:Generator_TableVarName="tableSampleFrequency" msprop:Generator_RowDeletingName="SampleFrequencyRowDeleting" msprop:Generator_TablePropName="SampleFrequency">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FREQUENCY" msprop:Generator_UserColumnName="FREQUENCY" msprop:Generator_ColumnVarNameInTable="columnFREQUENCY" msprop:Generator_ColumnPropNameInRow="FREQUENCY" msprop:Generator_ColumnPropNameInTable="FREQUENCYColumn" type="xs:short" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FilterOrder" msprop:Generator_UserTableName="FilterOrder" msprop:Generator_RowDeletedName="FilterOrderRowDeleted" msprop:Generator_RowChangedName="FilterOrderRowChanged" msprop:Generator_RowClassName="FilterOrderRow" msprop:Generator_RowChangingName="FilterOrderRowChanging" msprop:Generator_RowEvArgName="FilterOrderRowChangeEvent" msprop:Generator_RowEvHandlerName="FilterOrderRowChangeEventHandler" msprop:Generator_TableClassName="FilterOrderDataTable" msprop:Generator_TableVarName="tableFilterOrder" msprop:Generator_RowDeletingName="FilterOrderRowDeleting" msprop:Generator_TablePropName="FilterOrder">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ORDER" msprop:Generator_UserColumnName="ORDER" msprop:Generator_ColumnVarNameInTable="columnORDER" msprop:Generator_ColumnPropNameInRow="ORDER" msprop:Generator_ColumnPropNameInTable="ORDERColumn" type="xs:short" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FilterCoefficients" msprop:Generator_UserTableName="FilterCoefficients" msprop:Generator_RowDeletedName="FilterCoefficientsRowDeleted" msprop:Generator_RowChangedName="FilterCoefficientsRowChanged" msprop:Generator_RowClassName="FilterCoefficientsRow" msprop:Generator_RowChangingName="FilterCoefficientsRowChanging" msprop:Generator_RowEvArgName="FilterCoefficientsRowChangeEvent" msprop:Generator_RowEvHandlerName="FilterCoefficientsRowChangeEventHandler" msprop:Generator_TableClassName="FilterCoefficientsDataTable" msprop:Generator_TableVarName="tableFilterCoefficients" msprop:Generator_RowDeletingName="FilterCoefficientsRowDeleting" msprop:Generator_TablePropName="FilterCoefficients">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NUMERATOR" msprop:Generator_UserColumnName="NUMERATOR" msprop:Generator_ColumnVarNameInTable="columnNUMERATOR" msprop:Generator_ColumnPropNameInRow="NUMERATOR" msprop:Generator_ColumnPropNameInTable="NUMERATORColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="DENOMINATOR" msprop:Generator_UserColumnName="DENOMINATOR" msprop:Generator_ColumnVarNameInTable="columnDENOMINATOR" msprop:Generator_ColumnPropNameInRow="DENOMINATOR" msprop:Generator_ColumnPropNameInTable="DENOMINATORColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="FREQUENCY_FK" msprop:Generator_UserColumnName="FREQUENCY_FK" msprop:Generator_ColumnVarNameInTable="columnFREQUENCY_FK" msprop:Generator_ColumnPropNameInRow="FREQUENCY_FK" msprop:Generator_ColumnPropNameInTable="FREQUENCY_FKColumn" type="xs:short" minOccurs="0" />
+              <xs:element name="ORDER_FK" msprop:Generator_UserColumnName="ORDER_FK" msprop:Generator_ColumnVarNameInTable="columnORDER_FK" msprop:Generator_ColumnPropNameInRow="ORDER_FK" msprop:Generator_ColumnPropNameInTable="ORDER_FKColumn" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SampleFrequency" />
+      <xs:field xpath="mstns:FREQUENCY" />
+    </xs:unique>
+    <xs:unique name="FilterOrder_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FilterOrder" />
+      <xs:field xpath="mstns:ORDER" />
+    </xs:unique>
+    <xs:keyref name="FK_SampleFrequency_FilterCoefficients" refer="Constraint1" msdata:ConstraintOnly="true">
+      <xs:selector xpath=".//mstns:FilterCoefficients" />
+      <xs:field xpath="mstns:FREQUENCY_FK" />
+    </xs:keyref>
+    <xs:keyref name="FK_FilterOrder_FilterCoefficients" refer="FilterOrder_Constraint1" msdata:ConstraintOnly="true">
+      <xs:selector xpath=".//mstns:FilterCoefficients" />
+      <xs:field xpath="mstns:ORDER_FK" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>
