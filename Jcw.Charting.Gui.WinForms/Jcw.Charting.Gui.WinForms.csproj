@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8EE85670-CF35-4877-9BA1-2D2CB3FE5AD6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jcw.Charting.Gui.WinForms</RootNamespace>
+    <AssemblyName>Jcw.Charting.Gui.WinForms</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.BonusSkins.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.Data.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Design.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.Design.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.Office.v12.1.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.Printing.v12.1.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.Utils.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraBars.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraBars.v12.1.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraEditors.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraEditors.v12.1.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraNavBar.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraNavBar.v12.1.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraTreeList.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraTreeList.v12.1.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="netchartdir">
+      <HintPath>..\..\lib\netchartdir.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Controls\JcwAggregateIncludeDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwAggregateIncludeDataGridView.Designer.cs">
+      <DependentUpon>JcwAggregateIncludeDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwChartCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwChartCtl.Designer.cs">
+      <DependentUpon>JcwChartCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwChartMetadataCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwChartMetadataCtl.Designer.cs">
+      <DependentUpon>JcwChartMetadataCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwChartStatisticsCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwChartStatisticsCtl.Designer.cs">
+      <DependentUpon>JcwChartStatisticsCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChartNoteDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChartNoteDlg.Designer.cs">
+      <DependentUpon>ChartNoteDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JcwChartFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JcwChartFrm.Designer.cs">
+      <DependentUpon>JcwChartFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JcwChartMdiFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JcwChartMdiFrm.Designer.cs">
+      <DependentUpon>JcwChartMdiFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IJcwChartFrm.cs" />
+    <Compile Include="Interfaces\IJcwChartMetadataSave.cs" />
+    <Compile Include="Interfaces\IJcwCustomizeChart.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\JcwChartCtl.resx">
+      <DependentUpon>JcwChartCtl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\JcwChartMetadataCtl.resx">
+      <DependentUpon>JcwChartMetadataCtl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\JcwChartStatisticsCtl.resx">
+      <DependentUpon>JcwChartStatisticsCtl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChartNoteDlg.resx">
+      <DependentUpon>ChartNoteDlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jcw.Charting\Jcw.Charting.csproj">
+      <Project>{244ACF4C-1FF7-4962-A17D-18684976D9FA}</Project>
+      <Name>Jcw.Charting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jcw.Common.Gui.WinForms\Jcw.Common.Gui.WinForms.csproj">
+      <Project>{0ED6F385-B481-421D-A893-461B3A6F65F4}</Project>
+      <Name>Jcw.Common.Gui.WinForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jcw.Common.Gui\Jcw.Common.Gui.csproj">
+      <Project>{EF7605E9-C0E4-4E78-83CF-4B71944A1832}</Project>
+      <Name>Jcw.Common.Gui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jcw.Common\Jcw.Common.csproj">
+      <Project>{F2587562-E95A-4D1A-AD25-A4592F9F86E7}</Project>
+      <Name>Jcw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jcw.Resources\Jcw.Resources.csproj">
+      <Project>{FC2E3011-A655-466D-BB37-AFE1FE9C0AB8}</Project>
+      <Name>Jcw.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)\..\Jcw.Resources\Resources\ChartNote.gif" "$(TargetDir)" /R /O /Y
+xcopy "$(ProjectDir)\..\Jcw.Resources\Resources\CircleMarker.gif" "$(TargetDir)" /R /O /Y
+xcopy "$(ProjectDir)\..\Jcw.Resources\Resources\SquareMarker.gif" "$(TargetDir)" /R /O /Y
+"%25PROGRAMFILES%25\Microsoft SDKs\Windows\v7.0A\Bin\NETFX 4.0 Tools\sgen.exe"  /d /force /c:/platform:x86 "$(TargetPath)"
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

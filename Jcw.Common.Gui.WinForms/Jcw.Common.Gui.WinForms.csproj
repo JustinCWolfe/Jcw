@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0ED6F385-B481-421D-A893-461B3A6F65F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jcw.Common.Gui.WinForms</RootNamespace>
+    <AssemblyName>Jcw.Common.Gui.WinForms</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.BonusSkins.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.Data.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Design.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.Design.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.Office.v12.1.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.Printing.v12.1.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.Utils.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraBars.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraBars.v12.1.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraEditors.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraEditors.v12.1.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraNavBar.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraNavBar.v12.1.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraTreeList.v12.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DevExpress.XtraTreeList.v12.1.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Applications\JcwSingleton.cs" />
+    <Compile Include="Controller\NavigationController.cs" />
+    <Compile Include="Controls\JcwBrandingPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwBrandingPanel.Designer.cs">
+      <DependentUpon>JcwBrandingPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwCheckBox.Designer.cs">
+      <DependentUpon>JcwCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwComboBoxEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwComboBoxEdit.Designer.cs">
+      <DependentUpon>JcwComboBoxEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwContextMenuStrip.Designer.cs">
+      <DependentUpon>JcwContextMenuStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwDataGridView.Designer.cs">
+      <DependentUpon>JcwDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwDataGridViewButtonColumn.cs" />
+    <Compile Include="Controls\JcwDataGridViewButtonColumn.Designer.cs">
+      <DependentUpon>JcwDataGridViewButtonColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwDockManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwDockManager.Designer.cs">
+      <DependentUpon>JcwDockManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwGroupBox.Designer.cs">
+      <DependentUpon>JcwGroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwLabel.Designer.cs">
+      <DependentUpon>JcwLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwListBox.Designer.cs">
+      <DependentUpon>JcwListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwListView.Designer.cs">
+      <DependentUpon>JcwListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwMemoEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwMemoEdit.Designer.cs">
+      <DependentUpon>JcwMemoEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwMenuStrip.Designer.cs">
+      <DependentUpon>JcwMenuStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwPanel.Designer.cs">
+      <DependentUpon>JcwPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwProgressBar.Designer.cs">
+      <DependentUpon>JcwProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwSafeButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwSafeButton.Designer.cs">
+      <DependentUpon>JcwSafeButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwSafeTextPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwSafeTextPanel.Designer.cs">
+      <DependentUpon>JcwSafeTextPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwStatusStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwStatusStrip.Designer.cs">
+      <DependentUpon>JcwStatusStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwTabControl.Designer.cs">
+      <DependentUpon>JcwTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwTabPage.Designer.cs">
+      <DependentUpon>JcwTabPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwTextEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwTextEdit.Designer.cs">
+      <DependentUpon>JcwTextEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwToolStripButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwToolStripButton.Designer.cs">
+      <DependentUpon>JcwToolStripButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwToolStripLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwToolStripLabel.Designer.cs">
+      <DependentUpon>JcwToolStripLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwToolStripMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwToolStripMenuItem.Designer.cs">
+      <DependentUpon>JcwToolStripMenuItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwToolstripProfessionalRenderer.cs" />
+    <Compile Include="Controls\JcwToolstripProfessionalRenderer.Designer.cs">
+      <DependentUpon>JcwToolstripProfessionalRenderer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwToolStripSeparator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwToolStripSeparator.Designer.cs">
+      <DependentUpon>JcwToolStripSeparator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwToolStripStatusLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwToolStripStatusLabel.Designer.cs">
+      <DependentUpon>JcwToolStripStatusLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwTreeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwTreeList.Designer.cs">
+      <DependentUpon>JcwTreeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwTreeView.Designer.cs">
+      <DependentUpon>JcwTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JcwUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\JcwUserControl.Designer.cs">
+      <DependentUpon>JcwUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JcwBaseFixedStyleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JcwBaseFixedStyleFrm.Designer.cs">
+      <DependentUpon>JcwBaseFixedStyleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JcwBaseFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JcwBaseFrm.Designer.cs">
+      <DependentUpon>JcwBaseFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JcwBaseNavigationFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JcwBaseNavigationFrm.Designer.cs">
+      <DependentUpon>JcwBaseNavigationFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JcwBaseSizableStyleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JcwBaseSizableStyleFrm.Designer.cs">
+      <DependentUpon>JcwBaseSizableStyleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JcwChangeSkinFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JcwChangeSkinFrm.Designer.cs">
+      <DependentUpon>JcwChangeSkinFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JcwMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JcwMessageBox.Designer.cs">
+      <DependentUpon>JcwMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JcwRunTaskFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JcwRunTaskFrm.Designer.cs">
+      <DependentUpon>JcwRunTaskFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JcwSplashScreenFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JcwSplashScreenFrm.Designer.cs">
+      <DependentUpon>JcwSplashScreenFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Heirarchical.cs" />
+    <Compile Include="Forms\NavigationMdiParentFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NavigationMdiParentFrm.Designer.cs">
+      <DependentUpon>NavigationMdiParentFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\JcwBrandingPanel.resx">
+      <DependentUpon>JcwBrandingPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\JcwDockManager.resx">
+      <DependentUpon>JcwDockManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\JcwListBox.resx">
+      <DependentUpon>JcwListBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\JcwTreeList.resx">
+      <DependentUpon>JcwTreeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\JcwUserControl.resx">
+      <DependentUpon>JcwUserControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JcwBaseFixedStyleFrm.resx">
+      <DependentUpon>JcwBaseFixedStyleFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JcwBaseFrm.resx">
+      <DependentUpon>JcwBaseFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JcwBaseSizableStyleFrm.resx">
+      <DependentUpon>JcwBaseSizableStyleFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JcwChangeSkinFrm.resx">
+      <DependentUpon>JcwChangeSkinFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JcwMessageBox.resx">
+      <DependentUpon>JcwMessageBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JcwRunTaskFrm.resx">
+      <DependentUpon>JcwRunTaskFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JcwSplashScreenFrm.resx">
+      <DependentUpon>JcwSplashScreenFrm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Jcw.Common.Gui\Jcw.Common.Gui.csproj">
+      <Project>{EF7605E9-C0E4-4E78-83CF-4B71944A1832}</Project>
+      <Name>Jcw.Common.Gui</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jcw.Common\Jcw.Common.csproj">
+      <Project>{F2587562-E95A-4D1A-AD25-A4592F9F86E7}</Project>
+      <Name>Jcw.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jcw.Resources\Jcw.Resources.csproj">
+      <Project>{FC2E3011-A655-466D-BB37-AFE1FE9C0AB8}</Project>
+      <Name>Jcw.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

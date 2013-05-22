@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<FileSystemItemsToIndex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Items>
+    <FileSystemItemToIndex>
+      <Path>D:/src_tree/trunk</Path>
+      <SearchPattern>*.*</SearchPattern>
+      <SearchOptions>AllDirectories</SearchOptions>
+    </FileSystemItemToIndex>
+    <FileSystemItemToIndex>
+      <Path>D:/GCogSales</Path>
+      <SearchPattern>*.*</SearchPattern>
+      <SearchOptions>AllDirectories</SearchOptions>
+    </FileSystemItemToIndex>
+  </Items>
+</FileSystemItemsToIndex>

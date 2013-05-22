@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2587562-E95A-4D1A-AD25-A4592F9F86E7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jcw.Common</RootNamespace>
+    <AssemblyName>Jcw.Common</AssemblyName>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <PlatformTarget>x86</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="Franson.BlueTools.200, Version=1.2.1.818, Culture=neutral, PublicKeyToken=d529d3eaea61b0c3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Franson.BlueTools.200.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="ButterworthFilter.cs" />
+    <Compile Include="Interfaces\IJcwTask.cs" />
+    <Compile Include="Interfaces\IVector.cs" />
+    <Compile Include="Interfaces\IVectorAggregate.cs" />
+    <Compile Include="Interfaces\IWifi.cs" />
+    <Compile Include="Net\Bluetooth\Bluetools.cs" />
+    <Compile Include="CmdLine.cs" />
+    <Compile Include="Data\ColumnOrdinalMapBase.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="Interfaces\IFactory.cs" />
+    <Compile Include="Interfaces\IHeirarchical.cs" />
+    <Compile Include="Interfaces\IJcwComposite.cs" />
+    <Compile Include="Net\Wifi\NativeWifi\Interop.cs" />
+    <Compile Include="Net\Wifi\NativeWifi\WifiAccessPoint.cs" />
+    <Compile Include="Net\Wifi\NativeWifi\WlanApi.cs" />
+    <Compile Include="Net\Wifi\Wifi.cs" />
+    <Compile Include="Net\Wifi\WifiHelper.cs" />
+    <Compile Include="ParallelProcessor.cs" />
+    <Compile Include="Report\JcwReportLayoutColumn.cs" />
+    <Compile Include="Data\JcwReportDataView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crypto.cs" />
+    <Compile Include="JcwTask.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Data\ButterworthFilterCoefficients.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ButterworthFilterCoefficients.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Error.cs" />
+    <Compile Include="CmdLineParser\LetterEnumerator.cs" />
+    <Compile Include="CmdLineParser\OptionAttribute.cs" />
+    <Compile Include="CmdLineParser\Parser.cs" />
+    <Compile Include="CmdLineParser\StringEnumerator.cs" />
+    <Compile Include="CmdLineParser\ValueContainer.cs" />
+    <Compile Include="Interfaces\IBluetooth.cs" />
+    <Compile Include="Interfaces\ITuple.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="JcwEventArgs.cs" />
+    <Compile Include="JcwStyle.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\JcwReportDataColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\JcwReportDataRow.cs" />
+    <Compile Include="Data\JcwReportDataTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\JcwTabularReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TwoTuple.cs" />
+    <Compile Include="Utilities.cs" />
+    <Compile Include="Vector.cs" />
+    <Compile Include="VectorAggregate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\ButterworthFilterCoefficients.xsc">
+      <DependentUpon>ButterworthFilterCoefficients.xsd</DependentUpon>
+    </None>
+    <None Include="Data\ButterworthFilterCoefficients.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ButterworthFilterCoefficients.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\ButterworthFilterCoefficients.xss">
+      <DependentUpon>ButterworthFilterCoefficients.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(SolutionDir)\..\lib\BlueTools.dll" "$(TargetDir)" /R /O /Y
+xcopy "$(SolutionDir)\..\lib\BlueToolsMS.dll" "$(TargetDir)" /R /O /Y
+xcopy "$(SolutionDir)\..\lib\BlueToolsWC150.dll" "$(TargetDir)" /R /O /Y
+xcopy "$(SolutionDir)\..\lib\BlueToolsWC.dll" "$(TargetDir)" /R /O /Y</PostBuildEvent>
+  </PropertyGroup>
+</Project>
