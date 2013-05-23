@@ -91,6 +91,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>"%25PROGRAMFILES%25\Microsoft SDKs\Windows\v7.0A\Bin\NETFX 4.0 Tools\sgen.exe"  /d /force /c:/platform:x86 "$(TargetPath)"</PostBuildEvent>
+    <PostBuildEvent>"%25PROGRAMFILES%25\Microsoft SDKs\Windows\v7.0A\Bin\NETFX 4.0 Tools\sgen.exe"  /d /force /c:/platform:x86 "$(TargetPath)"
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

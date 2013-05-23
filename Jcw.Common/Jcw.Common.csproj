@@ -61,9 +61,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="Franson.BlueTools.200, Version=1.2.1.818, Culture=neutral, PublicKeyToken=d529d3eaea61b0c3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Franson.BlueTools.200.dll</HintPath>
+    <Reference Include="Franson.BlueTools.200">
+      <HintPath>..\lib\Franson.BlueTools.200.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -197,9 +196,10 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(SolutionDir)\..\lib\BlueTools.dll" "$(TargetDir)" /R /O /Y
-xcopy "$(SolutionDir)\..\lib\BlueToolsMS.dll" "$(TargetDir)" /R /O /Y
-xcopy "$(SolutionDir)\..\lib\BlueToolsWC150.dll" "$(TargetDir)" /R /O /Y
-xcopy "$(SolutionDir)\..\lib\BlueToolsWC.dll" "$(TargetDir)" /R /O /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(SolutionDir)\lib\BlueTools.dll" "$(TargetDir)" /R /O /Y
+xcopy "$(SolutionDir)\lib\BlueToolsMS.dll" "$(TargetDir)" /R /O /Y
+xcopy "$(SolutionDir)\lib\BlueToolsWC.dll" "$(TargetDir)" /R /O /Y
+xcopy "$(SolutionDir)\lib\BlueToolsWC150.dll" "$(TargetDir)" /R /O /Y
+</PostBuildEvent>
   </PropertyGroup>
 </Project>
