@@ -33,18 +33,18 @@ namespace Jcw.Search
         public T ItemsToIndex { get; protected set; }
         public U DocumentCreator { get; protected set; }
 
-        public void RunLoadIndex ()
+        public void RunLoadIndex()
         {
             BeginRunLoadIndex ();
             try
             {
                 LoadIndexerConfiguration ();
-                bool createIndex = LuceneIndex.IndexReader.IndexExists ( IndexDirectory ) == false;
-                IndexWriter = GetIndexWriter ( IndexDirectory, GetAnalyzer (), createIndex );
-                if ( createIndex )
+                bool createIndex = LuceneIndex.IndexReader.IndexExists (IndexDirectory) == false;
+                IndexWriter = GetIndexWriter (IndexDirectory, GetAnalyzer (), createIndex);
+                if (createIndex)
                 {
                     AddDocumentsToIndex ();
-                    IndexWriter.Optimize ( true );
+                    IndexWriter.Optimize (true);
                 }
             }
             finally
@@ -53,7 +53,7 @@ namespace Jcw.Search
             }
         }
 
-        public void RunUpdateIndex ()
+        public void RunUpdateIndex()
         {
         }
 
@@ -61,47 +61,47 @@ namespace Jcw.Search
 
         #region ISearchIndexAdapter Implementation
 
-        public abstract LuceneAnalysis.Analyzer GetAnalyzer ();
+        public abstract LuceneAnalysis.Analyzer GetAnalyzer();
 
         private LuceneSearch.IndexSearcher indexSearcher = null;
-        public LuceneSearch.IndexSearcher GetIndexSearcher ()
+        public LuceneSearch.IndexSearcher GetIndexSearcher()
         {
-            return indexSearcher = new LuceneSearch.IndexSearcher ( IndexDirectory );
+            return indexSearcher = new LuceneSearch.IndexSearcher (IndexDirectory);
         }
 
         #endregion
 
         #region IDisposable Implementation
 
-        public void Dispose ()
+        public void Dispose()
         {
-            Dispose ( true );
+            Dispose (true);
 
-            /// Use SupressFinalize in case a subclass of this type implements a finalizer.
-            GC.SuppressFinalize ( this );
+            // Use SupressFinalize in case a subclass of this type implements a finalizer.
+            GC.SuppressFinalize (this);
         }
 
         protected bool disposed = false;
         private readonly object padlock = new object ();
-        protected virtual void Dispose ( bool disposing )
+        protected virtual void Dispose(bool disposing)
         {
-            lock ( padlock )
+            lock (padlock)
             {
-                if ( disposed == false )
+                if (disposed == false)
                 {
                     SerializeItemsToIndex ();
 
-                    if ( disposing )
+                    if (disposing)
                     {
-                        if ( indexSearcher != null )
-                            indexSearcher.Close ();
-                        if ( IndexWriter != null )
-                            IndexWriter.Close ();
-                        if ( IndexDirectory != null )
-                            IndexDirectory.Close ();
+                        if (indexSearcher != null)
+                            indexSearcher.Dispose ();
+                        if (IndexWriter != null)
+                            IndexWriter.Dispose ();
+                        if (IndexDirectory != null)
+                            IndexDirectory.Dispose ();
                     }
 
-                    /// Indicate that the instance has been disposed.
+                    // Indicate that the instance has been disposed.
                     IndexWriter = null;
                     indexSearcher = null;
                     IndexDirectory = null;
@@ -134,32 +134,32 @@ namespace Jcw.Search
 
         #region Abstract Methods
 
-        protected abstract void AddDocumentsToIndex ();
-        protected abstract LuceneIndex.IndexWriter GetIndexWriter ( LuceneStore.Directory indexDirectory, LuceneAnalysis.Analyzer analyzer, bool create );
+        protected abstract void AddDocumentsToIndex();
+        protected abstract LuceneIndex.IndexWriter GetIndexWriter(LuceneStore.Directory indexDirectory, LuceneAnalysis.Analyzer analyzer, bool create);
 
         #endregion
 
         #region Virtual Methods
 
-        protected virtual void LoadIndexerConfiguration ()
+        protected virtual void LoadIndexerConfiguration()
         {
             NameValueCollection appSettings = ConfigurationManager.AppSettings;
 
             InDebug = false;
             string inDebug = appSettings["InDebug"];
-            if ( string.IsNullOrEmpty ( inDebug ) == false )
-                InDebug = Convert.ToBoolean ( inDebug );
+            if (string.IsNullOrEmpty (inDebug) == false)
+                InDebug = Convert.ToBoolean (inDebug);
 
             string indexFileSystemLocation = appSettings["IndexFileSystemLocation"];
-            /// Store the index on disk
-            if ( string.IsNullOrEmpty ( indexFileSystemLocation ) == false )
-                IndexDirectory = LuceneStore.FSDirectory.GetDirectory ( new FileInfo ( indexFileSystemLocation ) );
-            /// Store the index in memory
+            // Store the index on disk
+            if (string.IsNullOrEmpty (indexFileSystemLocation) == false)
+                IndexDirectory = LuceneStore.FSDirectory.Open (new DirectoryInfo (indexFileSystemLocation));
+            // Store the index in memory
             else
                 IndexDirectory = new LuceneStore.RAMDirectory ();
 
             string itemsToIndexFilename = appSettings["ItemsToIndexFilename"];
-            if ( string.IsNullOrEmpty ( itemsToIndexFilename ) == false )
+            if (string.IsNullOrEmpty (itemsToIndexFilename) == false)
             {
                 ItemsToIndexFilename = itemsToIndexFilename;
                 DeserializeItemsToIndex ();
@@ -168,15 +168,15 @@ namespace Jcw.Search
             DocumentCreator = Factory.Instance.Create<U> ();
         }
 
-        protected virtual void BeginRunLoadIndex ()
+        protected virtual void BeginRunLoadIndex()
         {
             IndexLoadStartTime = DateTime.Now;
         }
 
-        protected virtual void EndRunLoadIndex ()
+        protected virtual void EndRunLoadIndex()
         {
             IndexItemCount = IndexWriter.NumDocs ();
-            IndexWriter.Close ();
+            IndexWriter.Dispose ();
             IndexLoadEndTime = DateTime.Now;
 
             IndexLoadTime = IndexLoadEndTime - IndexLoadStartTime;
@@ -186,21 +186,21 @@ namespace Jcw.Search
 
         #region Private Methods
 
-        private void SerializeItemsToIndex ()
+        private void SerializeItemsToIndex()
         {
-            using ( StreamWriter writer = new StreamWriter ( ItemsToIndexFilename ) )
+            using (StreamWriter writer = new StreamWriter (ItemsToIndexFilename))
             {
-                XmlSerializer serializer = new XmlSerializer ( typeof ( T ) );
-                serializer.Serialize ( writer.BaseStream, ItemsToIndex );
+                XmlSerializer serializer = new XmlSerializer (typeof (T));
+                serializer.Serialize (writer.BaseStream, ItemsToIndex);
             }
         }
 
-        private void DeserializeItemsToIndex ()
+        private void DeserializeItemsToIndex()
         {
-            using ( StreamReader itemsToIndexReader = new StreamReader ( ItemsToIndexFilename ) )
+            using (StreamReader itemsToIndexReader = new StreamReader (ItemsToIndexFilename))
             {
-                XmlSerializer serializer = new XmlSerializer ( typeof ( T ) );
-                ItemsToIndex = (T) serializer.Deserialize ( itemsToIndexReader.BaseStream );
+                XmlSerializer serializer = new XmlSerializer (typeof (T));
+                ItemsToIndex = (T)serializer.Deserialize (itemsToIndexReader.BaseStream);
             }
         }
 
@@ -210,6 +210,6 @@ namespace Jcw.Search
     public abstract class DocumentManagerBase<T> : IGetDocument<T, LuceneDocuments.Document>
     {
         public enum SearchableFields { }
-        public abstract LuceneDocuments.Document GetDocument ( T elementToIndex );
+        public abstract LuceneDocuments.Document GetDocument(T elementToIndex);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using LuceneQueryParsers = Lucene.Net.QueryParsers;
+using LuceneUtil = Lucene.Net.Util;
 
 namespace Jcw.Search
 {
@@ -10,9 +11,10 @@ namespace Jcw.Search
     {
         #region Overrides
 
-        protected override LuceneQueryParsers.QueryParser CreateQueryParser ()
+        protected override LuceneQueryParsers.QueryParser CreateQueryParser()
         {
             return new LuceneQueryParsers.MultiFieldQueryParser (
+                LuceneUtil.Version.LUCENE_30,
                 new string[] { 
                     FileSystemDocumentCreator.SearchableFields.Contents.ToString(),
                     FileSystemDocumentCreator.SearchableFields.CreationTimeUtc.ToString(),

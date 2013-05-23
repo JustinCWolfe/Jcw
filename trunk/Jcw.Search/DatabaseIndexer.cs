@@ -12,6 +12,7 @@ using LuceneAnalysis = Lucene.Net.Analysis;
 using LuceneDocuments = Lucene.Net.Documents;
 using LuceneIndex = Lucene.Net.Index;
 using LuceneStore = Lucene.Net.Store;
+using LuceneUtil = Lucene.Net.Util;
 
 namespace Jcw.Search
 {
@@ -34,65 +35,65 @@ namespace Jcw.Search
     {
         #region Overrides
 
-        public override LuceneAnalysis.Analyzer GetAnalyzer ()
+        public override LuceneAnalysis.Analyzer GetAnalyzer()
         {
-            return new LuceneAnalysis.Standard.StandardAnalyzer ();
+            return new LuceneAnalysis.Standard.StandardAnalyzer (LuceneUtil.Version.LUCENE_30);
         }
 
-        protected override LuceneIndex.IndexWriter GetIndexWriter ( LuceneStore.Directory indexDirectory,
-            LuceneAnalysis.Analyzer analyzer, bool create )
+        protected override LuceneIndex.IndexWriter GetIndexWriter(LuceneStore.Directory indexDirectory,
+            LuceneAnalysis.Analyzer analyzer, bool create)
         {
             return new LuceneIndex.IndexWriter (
                 indexDirectory,
                 analyzer,
                 create,
-                LuceneIndex.IndexWriter.MaxFieldLength.UNLIMITED );
+                LuceneIndex.IndexWriter.MaxFieldLength.UNLIMITED);
         }
 
-        protected override void AddDocumentsToIndex ()
+        protected override void AddDocumentsToIndex()
         {
-            using ( SqlConnection connection = new SqlConnection ( ItemsToIndex.ConnectionString ) )
+            using (SqlConnection connection = new SqlConnection (ItemsToIndex.ConnectionString))
             {
                 connection.Open ();
 
-                foreach ( DatabaseItemToIndex itemToIndex in ItemsToIndex.Items )
+                foreach (DatabaseItemToIndex itemToIndex in ItemsToIndex.Items)
                 {
                     string columns = string.Empty;
-                    itemToIndex.Columns.ForEach ( columnName => columns += columnName + "," );
-                    columns = columns.Remove ( columns.Length - 1 );
+                    itemToIndex.Columns.ForEach (columnName => columns += columnName + ",");
+                    columns = columns.Remove (columns.Length - 1);
 
                     string query = "select " + columns + " from " + itemToIndex.TableName;
-                    if ( string.IsNullOrEmpty ( itemToIndex.WhereClause ) == false )
+                    if (string.IsNullOrEmpty (itemToIndex.WhereClause) == false)
                         query += " where " + itemToIndex.WhereClause;
 
-                    SqlCommand selectCommand = new SqlCommand ( query, connection );
+                    SqlCommand selectCommand = new SqlCommand (query, connection);
 
                     SqlDataAdapter adapter = new SqlDataAdapter ();
                     adapter.SelectCommand = selectCommand;
-                    DataTable table = new DataTable ( itemToIndex.TableName );
-                    adapter.Fill ( table );
+                    DataTable table = new DataTable (itemToIndex.TableName);
+                    adapter.Fill (table);
 
-                    /// Get the primary keys for the data table we are querying and set them in our detached
-                    /// ADO.NET datatable because this will be used when creating our search index document
+                    // Get the primary keys for the data table we are querying and set them in our detached
+                    // ADO.NET datatable because this will be used when creating our search index document
                     List<DataColumn> keyColumns = new List<DataColumn> ();
-                    using ( SqlDataReader primaryKeyReader = selectCommand.ExecuteReader ( CommandBehavior.KeyInfo ) )
+                    using (SqlDataReader primaryKeyReader = selectCommand.ExecuteReader (CommandBehavior.KeyInfo))
                     {
                         DataTable schemaTable = primaryKeyReader.GetSchemaTable ();
                         primaryKeyReader.Close ();
-                        foreach ( DataRow row in schemaTable.Rows )
+                        foreach (DataRow row in schemaTable.Rows)
                         {
-                            if ( Convert.ToBoolean ( row["IsKey"] ) )
+                            if (Convert.ToBoolean (row["IsKey"]))
                             {
                                 string keyColumnName = row["ColumnName"] as string;
-                                keyColumns.Add ( table.Columns[keyColumnName] );
+                                keyColumns.Add (table.Columns[keyColumnName]);
                             }
                         }
                         table.PrimaryKey = keyColumns.ToArray ();
 
-                        foreach ( DataRow row in table.Rows )
+                        foreach (DataRow row in table.Rows)
                         {
-                            LuceneDocuments.Document doc = DocumentCreator.GetDocument ( row );
-                            IndexWriter.AddDocument ( doc );
+                            LuceneDocuments.Document doc = DocumentCreator.GetDocument (row);
+                            IndexWriter.AddDocument (doc);
                         }
                     }
                 }
@@ -119,40 +120,40 @@ namespace Jcw.Search
 
         #region IGetDocument Implementation
 
-        public override LuceneDocuments.Document GetDocument ( DataRow elementToIndex )
+        public override LuceneDocuments.Document GetDocument(DataRow elementToIndex)
         {
             LuceneDocuments.Document doc = new LuceneDocuments.Document ();
 
-            /// Store the table name for this row in the document so we would know where to lookup
-            /// this record when searching
-            doc.Add ( new LuceneDocuments.Field ( "TableName", elementToIndex.Table.TableName,
-                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED ) );
+            // Store the table name for this row in the document so we would know where to lookup
+            // this record when searching
+            doc.Add (new LuceneDocuments.Field ("TableName", elementToIndex.Table.TableName,
+                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED));
 
-            foreach ( DataColumn columnn in elementToIndex.Table.Columns )
+            foreach (DataColumn columnn in elementToIndex.Table.Columns)
             {
-                /// Do not index database ids but store them so that they can be accessed as part of 
-                /// search results (for retrieval)
-                if ( columnn.ColumnName.EndsWith ( "Id" ) )
+                // Do not index database ids but store them so that they can be accessed as part of 
+                // search results (for retrieval)
+                if (columnn.ColumnName.EndsWith ("Id"))
                 {
-                    doc.Add ( new LuceneDocuments.Field ( columnn.ColumnName, Convert.ToString ( elementToIndex[columnn] ),
-                        LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NO ) );
+                    doc.Add (new LuceneDocuments.Field (columnn.ColumnName, Convert.ToString (elementToIndex[columnn]),
+                        LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NO));
                     continue;
                 }
 
-                /// After special handling for Id columns, all other columns should be listed in the searchable fields enumeration
-                if ( Enum.GetNames ( typeof ( SearchableFields ) ).Contains ( columnn.ColumnName ) == false )
-                    throw new Exception ( "Column name " + columnn.ColumnName + " must be added as a 'Searchable Field'" );
+                // After special handling for Id columns, all other columns should be listed in the searchable fields enumeration
+                if (Enum.GetNames (typeof (SearchableFields)).Contains (columnn.ColumnName) == false)
+                    throw new Exception ("Column name " + columnn.ColumnName + " must be added as a 'Searchable Field'");
 
-                /// Index (but do not analyze) and store values from database primary key columns
-                if ( elementToIndex.Table.PrimaryKey.Contains ( columnn ) )
+                // Index (but do not analyze) and store values from database primary key columns
+                if (elementToIndex.Table.PrimaryKey.Contains (columnn))
                 {
-                    doc.Add ( new LuceneDocuments.Field ( columnn.ColumnName, Convert.ToString ( elementToIndex[columnn] ),
-                        LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED ) );
+                    doc.Add (new LuceneDocuments.Field (columnn.ColumnName, Convert.ToString (elementToIndex[columnn]),
+                        LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED));
                 }
                 else
                 {
-                    doc.Add ( new LuceneDocuments.Field ( columnn.ColumnName, Convert.ToString ( elementToIndex[columnn] ),
-                        LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.ANALYZED ) );
+                    doc.Add (new LuceneDocuments.Field (columnn.ColumnName, Convert.ToString (elementToIndex[columnn]),
+                        LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.ANALYZED));
                 }
             }
 

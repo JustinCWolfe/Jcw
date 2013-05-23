@@ -20,7 +20,7 @@ namespace Jcw.Search
         public IIndexQueryDefinition IndexQueryDefinition { get; set; }
         public LuceneSearch.TopDocs QueryHits { get; private set; }
 
-        public void RunSearch ()
+        public void RunSearch()
         {
             BeginRunSearch ();
             try
@@ -39,17 +39,17 @@ namespace Jcw.Search
 
         #region IDisposable Implementation
 
-        public void Dispose ()
+        public void Dispose()
         {
             Dispose (true);
 
-            /// Use SupressFinalize in case a subclass of this type implements a finalizer.
+            // Use SupressFinalize in case a subclass of this type implements a finalizer.
             GC.SuppressFinalize (this);
         }
 
         protected bool disposed = false;
         private readonly object padlock = new object ();
-        protected void Dispose (bool disposing)
+        protected void Dispose(bool disposing)
         {
             lock (padlock)
             {
@@ -58,10 +58,10 @@ namespace Jcw.Search
                     if (disposing)
                     {
                         if (IndexSearcher != null)
-                            IndexSearcher.Close ();
+                            IndexSearcher.Dispose ();
                     }
 
-                    /// Indicate that the instance has been disposed.
+                    // Indicate that the instance has been disposed.
                     IndexSearcher = null;
                     disposed = true;
                 }
@@ -81,18 +81,18 @@ namespace Jcw.Search
 
         #region Abstract Methods
 
-        protected abstract LuceneQueryParsers.QueryParser CreateQueryParser ();
+        protected abstract LuceneQueryParsers.QueryParser CreateQueryParser();
 
         #endregion
 
         #region Virtual Methods
 
-        protected virtual void BeginRunSearch ()
+        protected virtual void BeginRunSearch()
         {
             IndexSearchStartTime = DateTime.Now;
         }
 
-        protected virtual void EndRunSearch ()
+        protected virtual void EndRunSearch()
         {
             IndexSearchEndTime = DateTime.Now;
 

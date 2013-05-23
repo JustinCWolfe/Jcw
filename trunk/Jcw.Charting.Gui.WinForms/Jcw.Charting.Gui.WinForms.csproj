@@ -32,78 +32,50 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.BonusSkins.v12.1.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.BonusSkins.v12.1">
+      <HintPath>..\lib\DevExpress.BonusSkins.v12.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Data.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.Data.v12.1.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.Data.v12.1">
+      <HintPath>..\lib\DevExpress.Data.v12.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Design.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.Design.v12.1.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.Design.v12.1">
+      <HintPath>..\lib\DevExpress.Design.v12.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Office.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.Office.v12.1.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.Office.v12.1.Core">
+      <HintPath>..\lib\DevExpress.Office.v12.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Printing.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.Printing.v12.1.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.Printing.v12.1.Core">
+      <HintPath>..\lib\DevExpress.Printing.v12.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Utils.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.Utils.v12.1.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.Utils.v12.1">
+      <HintPath>..\lib\DevExpress.Utils.v12.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraBars.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.XtraBars.v12.1.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraBars.v12.1">
+      <HintPath>..\lib\DevExpress.XtraBars.v12.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraBars.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.XtraBars.v12.1.Design.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraBars.v12.1.Design">
+      <HintPath>..\lib\DevExpress.XtraBars.v12.1.Design.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.XtraEditors.v12.1.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraEditors.v12.1">
+      <HintPath>..\lib\DevExpress.XtraEditors.v12.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.XtraEditors.v12.1.Design.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraEditors.v12.1.Design">
+      <HintPath>..\lib\DevExpress.XtraEditors.v12.1.Design.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraNavBar.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.XtraNavBar.v12.1.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraNavBar.v12.1">
+      <HintPath>..\lib\DevExpress.XtraNavBar.v12.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraNavBar.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.XtraNavBar.v12.1.Design.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraNavBar.v12.1.Design">
+      <HintPath>..\lib\DevExpress.XtraNavBar.v12.1.Design.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraTreeList.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.XtraTreeList.v12.1.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraTreeList.v12.1">
+      <HintPath>..\lib\DevExpress.XtraTreeList.v12.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.XtraTreeList.v12.1.Design, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DevExpress.XtraTreeList.v12.1.Design.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="DevExpress.XtraTreeList.v12.1.Design">
+      <HintPath>..\lib\DevExpress.XtraTreeList.v12.1.Design.dll</HintPath>
     </Reference>
     <Reference Include="netchartdir">
-      <HintPath>..\..\lib\netchartdir.dll</HintPath>
+      <HintPath>..\lib\netchartdir.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -124,27 +96,19 @@
     <Compile Include="Controls\JcwAggregateIncludeDataGridView.Designer.cs">
       <DependentUpon>JcwAggregateIncludeDataGridView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\JcwChartCtl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Controls\JcwChartCtl.cs" />
     <Compile Include="Controls\JcwChartCtl.Designer.cs">
       <DependentUpon>JcwChartCtl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\JcwChartMetadataCtl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Controls\JcwChartMetadataCtl.cs" />
     <Compile Include="Controls\JcwChartMetadataCtl.Designer.cs">
       <DependentUpon>JcwChartMetadataCtl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\JcwChartStatisticsCtl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Controls\JcwChartStatisticsCtl.cs" />
     <Compile Include="Controls\JcwChartStatisticsCtl.Designer.cs">
       <DependentUpon>JcwChartStatisticsCtl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ChartNoteDlg.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\ChartNoteDlg.cs" />
     <Compile Include="Forms\ChartNoteDlg.Designer.cs">
       <DependentUpon>ChartNoteDlg.cs</DependentUpon>
     </Compile>

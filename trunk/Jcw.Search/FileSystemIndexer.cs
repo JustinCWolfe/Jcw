@@ -10,6 +10,7 @@ using LuceneAnalysis = Lucene.Net.Analysis;
 using LuceneDocuments = Lucene.Net.Documents;
 using LuceneIndex = Lucene.Net.Index;
 using LuceneStore = Lucene.Net.Store;
+using LuceneUtil = Lucene.Net.Util;
 
 namespace Jcw.Search
 {
@@ -31,34 +32,34 @@ namespace Jcw.Search
     {
         #region Overrides
 
-        public override LuceneAnalysis.Analyzer GetAnalyzer ()
+        public override LuceneAnalysis.Analyzer GetAnalyzer()
         {
-            return new LuceneAnalysis.Standard.StandardAnalyzer ();
+            return new LuceneAnalysis.Standard.StandardAnalyzer (LuceneUtil.Version.LUCENE_30);
         }
 
-        protected override LuceneIndex.IndexWriter GetIndexWriter ( LuceneStore.Directory indexDirectory,
-            LuceneAnalysis.Analyzer analyzer, bool create )
+        protected override LuceneIndex.IndexWriter GetIndexWriter(LuceneStore.Directory indexDirectory,
+            LuceneAnalysis.Analyzer analyzer, bool create)
         {
             return new LuceneIndex.IndexWriter (
                 indexDirectory,
                 analyzer,
                 create,
-                LuceneIndex.IndexWriter.MaxFieldLength.UNLIMITED );
+                LuceneIndex.IndexWriter.MaxFieldLength.UNLIMITED);
         }
 
-        protected override void AddDocumentsToIndex ()
+        protected override void AddDocumentsToIndex()
         {
-            foreach ( FileSystemItemToIndex itemToIndex in ItemsToIndex.Items )
+            foreach (FileSystemItemToIndex itemToIndex in ItemsToIndex.Items)
             {
-                string[] files = Directory.GetFiles ( itemToIndex.Path, itemToIndex.SearchPattern, itemToIndex.SearchOptions );
-                foreach ( string filename in files )
+                string[] files = Directory.GetFiles (itemToIndex.Path, itemToIndex.SearchPattern, itemToIndex.SearchOptions);
+                foreach (string filename in files)
                 {
-                    if ( Directory.Exists ( filename ) == false && File.Exists ( filename ) )
+                    if (Directory.Exists (filename) == false && File.Exists (filename))
                     {
-                        FileInfo fi = new FileInfo ( filename );
-                        Debug.WriteLine ( "Indexing file: " + fi.FullName );
-                        LuceneDocuments.Document doc = DocumentCreator.GetDocument ( fi );
-                        IndexWriter.AddDocument ( doc );
+                        FileInfo fi = new FileInfo (filename);
+                        Debug.WriteLine ("Indexing file: " + fi.FullName);
+                        LuceneDocuments.Document doc = DocumentCreator.GetDocument (fi);
+                        IndexWriter.AddDocument (doc);
                     }
                 }
             }
@@ -104,49 +105,49 @@ namespace Jcw.Search
 
         #region IGetDocument Members
 
-        public override LuceneDocuments.Document GetDocument ( FileInfo fileToIndex )
+        public override LuceneDocuments.Document GetDocument(FileInfo fileToIndex)
         {
             LuceneDocuments.Document doc = new LuceneDocuments.Document ();
 
-            /// Index but do not tokenize the creation time
-            doc.Add ( new LuceneDocuments.Field ( SearchableFields.CreationTimeUtc.ToString (), fileToIndex.CreationTimeUtc.ToString (),
-                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED ) );
+            // Index but do not tokenize the creation time
+            doc.Add (new LuceneDocuments.Field (SearchableFields.CreationTimeUtc.ToString (), fileToIndex.CreationTimeUtc.ToString (),
+                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED));
 
-            doc.Add ( new LuceneDocuments.Field ( SearchableFields.DirectoryName.ToString (), fileToIndex.DirectoryName,
-                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.ANALYZED ) );
+            doc.Add (new LuceneDocuments.Field (SearchableFields.DirectoryName.ToString (), fileToIndex.DirectoryName,
+                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.ANALYZED));
 
-            /// Index but do not tokenize the file extension
-            doc.Add ( new LuceneDocuments.Field ( SearchableFields.Extension.ToString (), fileToIndex.Extension,
-                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED ) );
+            // Index but do not tokenize the file extension
+            doc.Add (new LuceneDocuments.Field (SearchableFields.Extension.ToString (), fileToIndex.Extension,
+                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED));
 
-            /// Don't index the full name because we are indexing the path and filename already. We should 
-            /// store the full name though so it can be displayed in search results
-            doc.Add ( new LuceneDocuments.Field ( SearchableFields.FullName.ToString (), fileToIndex.FullName,
-                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NO ) );
+            // Don't index the full name because we are indexing the path and filename already. We should 
+            // store the full name though so it can be displayed in search results
+            doc.Add (new LuceneDocuments.Field (SearchableFields.FullName.ToString (), fileToIndex.FullName,
+                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NO));
 
-            /// Index but do not tokenize the last write time
-            doc.Add ( new LuceneDocuments.Field ( SearchableFields.LastWriteTimeUtc.ToString (), fileToIndex.LastWriteTimeUtc.ToString (),
-                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED ) );
+            // Index but do not tokenize the last write time
+            doc.Add (new LuceneDocuments.Field (SearchableFields.LastWriteTimeUtc.ToString (), fileToIndex.LastWriteTimeUtc.ToString (),
+                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED));
 
-            /// Index but do not tokenize the file length
-            doc.Add ( new LuceneDocuments.Field ( SearchableFields.Length.ToString (), fileToIndex.Length.ToString (),
-                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED ) );
+            // Index but do not tokenize the file length
+            doc.Add (new LuceneDocuments.Field (SearchableFields.Length.ToString (), fileToIndex.Length.ToString (),
+                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.NOT_ANALYZED));
 
-            doc.Add ( new LuceneDocuments.Field ( SearchableFields.Name.ToString (), fileToIndex.Name,
-                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.ANALYZED ) );
+            doc.Add (new LuceneDocuments.Field (SearchableFields.Name.ToString (), fileToIndex.Name,
+                LuceneDocuments.Field.Store.YES, LuceneDocuments.Field.Index.ANALYZED));
 
             try
             {
-                /// All "known" text file extensions are in lower case so make sure we call 
-                /// ToLower on file extension before doing exists check
-                if ( knownTextFileExtensions.Contains ( fileToIndex.Extension.ToLower () ) )
+                // All "known" text file extensions are in lower case so make sure we call 
+                // ToLower on file extension before doing exists check
+                if (knownTextFileExtensions.Contains (fileToIndex.Extension.ToLower ()))
                 {
-                    doc.Add ( new LuceneDocuments.Field (
+                    doc.Add (new LuceneDocuments.Field (
                         SearchableFields.Contents.ToString (),
-                        new StreamReader ( fileToIndex.FullName ) ) );
+                        new StreamReader (fileToIndex.FullName)));
                 }
             }
-            catch ( IOException )
+            catch (IOException)
             {
             }
 

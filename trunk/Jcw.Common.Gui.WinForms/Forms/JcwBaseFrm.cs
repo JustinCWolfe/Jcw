@@ -72,9 +72,8 @@ namespace Jcw.Common.Gui.WinForms.Forms
         {
             InitializeComponent ();
 
-            // register the bonus skins and office skins
+            // register the bonus skins skins
             BonusSkins.Register ();
-            OfficeSkins.Register ();
 
             // set the default skin to use
             DevExpress.LookAndFeel.UserLookAndFeel.Default.Style = LookAndFeelStyle.Skin;
