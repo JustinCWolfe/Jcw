@@ -96,19 +96,27 @@
     <Compile Include="Controls\JcwAggregateIncludeDataGridView.Designer.cs">
       <DependentUpon>JcwAggregateIncludeDataGridView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\JcwChartCtl.cs" />
+    <Compile Include="Controls\JcwChartCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\JcwChartCtl.Designer.cs">
       <DependentUpon>JcwChartCtl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\JcwChartMetadataCtl.cs" />
+    <Compile Include="Controls\JcwChartMetadataCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\JcwChartMetadataCtl.Designer.cs">
       <DependentUpon>JcwChartMetadataCtl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\JcwChartStatisticsCtl.cs" />
+    <Compile Include="Controls\JcwChartStatisticsCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\JcwChartStatisticsCtl.Designer.cs">
       <DependentUpon>JcwChartStatisticsCtl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ChartNoteDlg.cs" />
+    <Compile Include="Forms\ChartNoteDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\ChartNoteDlg.Designer.cs">
       <DependentUpon>ChartNoteDlg.cs</DependentUpon>
     </Compile>

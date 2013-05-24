@@ -31,6 +31,8 @@ namespace Jcw.Charting.Gui.WinForms.Controls
         #region Constants
 
         private const int MaxPointsWithoutAggregate = 7500;
+        private const string ChartNoteFilename = "ChartNote.gif";
+        private const string CircleMarkerFilename = "CircleMarker.gif";
 
         #endregion
 
@@ -1774,6 +1776,24 @@ namespace Jcw.Charting.Gui.WinForms.Controls
             return imageMapText;
         }
 
+        private void ConditionallyUnpackImageFile(string filename)
+        {
+            if (!File.Exists (filename))
+            {
+                Debug.WriteLine (string.Format ("Attempting to unpack filename '{0}'.", filename));
+
+                // The resource name is the filename with the suffix removed.
+                string resourceName = Path.GetFileNameWithoutExtension (filename);
+
+                Debug.WriteLine (string.Format ("Loading image from resources.", filename));
+                Bitmap image = JcwResources.GetObject (resourceName) as Bitmap;
+
+                Debug.WriteLine (string.Format ("Saving image to filename '{0}'.", filename));
+                image.Save (filename);
+            }
+            Debug.Assert (File.Exists (filename), string.Format ("File '{0}' not unpacked successfully", filename));
+        }
+
         private void AddChartMetadataNotes ()
         {
             // Only add metadata if metadata is saveable - otherwise it would be displayed on the 
@@ -1798,9 +1818,14 @@ namespace Jcw.Charting.Gui.WinForms.Controls
                             noteSize = g.MeasureString (n.NoteText, m_noteFont, layoutArea);
                         }
 
+                        ConditionallyUnpackImageFile (ChartNoteFilename);
+
                         // adds an invisible text box to the chart with the contents being the chart note image
                         // add chart note image using CDML - chart director markup language
-                        CD.TextBox tb = m_chart.addText (x - 5, y - 5, "<*img=ChartNote.gif,height=30,width=12*>" + n.NoteText);
+                        int height = 30;
+                        int width = 12;
+                        string chartNoteText = string.Format ("<*img={0},height={1},width={2}*>{3}", ChartNoteFilename, height, width, n.NoteText);
+                        CD.TextBox tb = m_chart.addText (x - 5, y - 5, chartNoteText);
                         tb.setAlignment (CD.Chart.TopLeft);
                         tb.setFontColor (CD.Chart.CColor (Color.Black));
                         tb.setFontSize (m_noteFont.SizeInPoints);
@@ -1930,11 +1955,14 @@ namespace Jcw.Charting.Gui.WinForms.Controls
                         circleMarkerSize.Width *= 1.1f;
                         circleMarkerSize.Height *= 1.1f;
 
+                        ConditionallyUnpackImageFile (CircleMarkerFilename);
+
                         // adds an invisible text box to the chart with the contents being the chart note image
                         // add chart note image using CDML - chart director markup language
-                        int width = 10, height = 10;
-                        string markerText = string.Format ("<*img=CircleMarker.gif,height={0},width={1}*>{2}", height, width, fullMarkText);
-                        CD.TextBox tb = m_chart.addText (x - 7, y - 7, markerText);
+                        int height = 10;
+                        int width = 10;
+                        string circleMarkerText = string.Format ("<*img={0},height={1},width={2}*>{3}", CircleMarkerFilename, height, width, fullMarkText);
+                        CD.TextBox tb = m_chart.addText (x - 7, y - 7, circleMarkerText);
                         tb.setAlignment (CD.Chart.TopLeft);
                         tb.setFontColor (CD.Chart.CColor (Color.Black));
                         tb.setFontSize (m_noteFont.SizeInPoints);
