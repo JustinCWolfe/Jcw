@@ -33,10 +33,6 @@ xcopy "%SOLUTION_DIR%Jcw.Charting.Gui.WinForms\%BUILD_DIR%\Jcw.Charting.Gui.WinF
 xcopy "%SOLUTION_DIR%Jcw.Charting.Gui.WinForms\%BUILD_DIR%\Jcw.Charting.Gui.WinForms.XmlSerializers.dll" "%BIN%" /R /O /Y
 xcopy "%SOLUTION_DIR%Jcw.Charting.Gui.WinForms\%BUILD_DIR%\Jcw.Charting.Gui.WinForms.XmlSerializers.pdb" "%BIN%" /R /O /Y
 
-xcopy "%SOLUTION_DIR%Jcw.Resources\Resources\ChartNote.gif" "%BIN%" /R /O /Y
-xcopy "%SOLUTION_DIR%Jcw.Resources\Resources\CircleMarker.gif" "%BIN%" /R /O /Y
-xcopy "%SOLUTION_DIR%Jcw.Resources\Resources\SquareMarker.gif" "%BIN%" /R /O /Y
-
 xcopy "%LIB%\BlueTools.dll" "%BIN%" /R /O /Y
 xcopy "%LIB%\BlueToolsMS.dll" "%BIN%" /R /O /Y
 xcopy "%LIB%\BlueToolsWC.dll" "%BIN%" /R /O /Y
