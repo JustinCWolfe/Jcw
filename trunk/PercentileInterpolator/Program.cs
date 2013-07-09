@@ -5,11 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
+using Jcw.Common.Interfaces;
+using Jcw.Common.Interpolation;
+
 namespace PercentileInterpolator
 {
     class Program
     {
-        [DebuggerDisplay ("{Age}/{Length}/{Weight}")]
+        [DebuggerDisplay ("Age: {Age}/Length: {Length}/Weight: {Weight}")]
         private class Measurement
         {
             public double Age { get; set; }
@@ -29,18 +32,18 @@ The third element should be the weight in kg.";
         private const string LengthByAgeCSVFilename = "LengthByAge.csv";
         private const string WeightByAgeCSVFilename = "WeightByAge.csv";
 
+        private static IInterpolator Interpolator = InterpolationFactory.Create (InterpolationType.Linear);
+
         /// <summary>
         /// Key is age in months.
-//        /// Value is and ordered dictionary where key is height and value is percentile.
-        /// Value is and ordered dictionary where key is percentile and value is height.
+        /// Value is an ordered dictionary where key is percentile and value is height.
         /// </summary>
         private static SortedDictionary<double, SortedDictionary<double, double>> LengthPerAge =
             new SortedDictionary<double, SortedDictionary<double, double>> ();
 
         /// <summary>
         /// Key is age in months.
-//        /// Value is and ordered dictionary where key is weight and value is percentile.
-        /// Value is and ordered dictionary where key is percentile and value is weight.
+        /// Value is an ordered dictionary where key is percentile and value is weight.
         /// </summary>
         private static SortedDictionary<double, SortedDictionary<double, double>> WeightPerAge =
             new SortedDictionary<double, SortedDictionary<double, double>> ();
@@ -67,7 +70,6 @@ The third element should be the weight in kg.";
                         for (int linePartIndex = 1 ; linePartIndex < lineParts.Length ; linePartIndex++)
                         {
                             int percentileIndex = linePartIndex - 1;
-                            //ageVector.Add (Convert.ToDouble (lineParts[linePartIndex]), Convert.ToDouble (percentiles[percentileIndex]));
                             ageVector.Add (Convert.ToDouble (percentiles[percentileIndex]), Convert.ToDouble (lineParts[linePartIndex]));
                         }
                         dictionary.Add (Convert.ToDouble (lineParts[0]), ageVector);
@@ -106,16 +108,16 @@ The third element should be the weight in kg.";
             return measurements;
         }
 
-        private static SortedDictionary<double, double> CreateInterpolatedAgeVector(double factor,
-            SortedDictionary<double, double> vector1,
-            SortedDictionary<double, double> vector2)
+        private static SortedDictionary<double, double> CreateInterpolatedAgeVector(
+            double previousAge, double currentAge, double ageToCreateVectorFor,
+            SortedDictionary<double, double> vector1, SortedDictionary<double, double> vector2)
         {
             SortedDictionary<double, double> interpolatedAgeVector = new SortedDictionary<double, double> ();
             foreach (double percentile in vector1.Keys)
             {
                 double vector1Value = vector1[percentile];
                 double vector2Value = vector2[percentile];
-                interpolatedAgeVector.Add (percentile, (vector1Value + vector2Value) * factor);
+                interpolatedAgeVector[percentile] = Interpolator.Interpolate (previousAge, vector1Value, currentAge, vector2Value, ageToCreateVectorFor);
             }
             return interpolatedAgeVector;
         }
@@ -124,34 +126,58 @@ The third element should be the weight in kg.";
         /// Look for an exact match age vector in the passed in dictionary for the measurement.
         /// If no exact match is found, interpolate between bounding age vectors and return interpolated vector.
         /// </summary>
-        private static SortedDictionary<double, double> FindAgeVectorInDictionary(double age,
+        private static SortedDictionary<double, double> FindAgeVectorInDictionary(double ageToFindVectorFor,
             SortedDictionary<double, SortedDictionary<double, double>> dictionary)
         {
             double previousAge = 0;
             SortedDictionary<double, double> previousAgeVector = null;
-            foreach (double dictionaryAge in dictionary.Keys)
+            foreach (double currentAge in dictionary.Keys)
             {
-                if (age == dictionaryAge)
+                if (ageToFindVectorFor == currentAge)
                 {
-                    return dictionary[dictionaryAge];
+                    return dictionary[currentAge];
                 }
-                else if (dictionaryAge < age)
+                else if (currentAge < ageToFindVectorFor)
                 {
-                    previousAge = dictionaryAge;
-                    previousAgeVector = dictionary[dictionaryAge];
+                    previousAge = currentAge;
+                    previousAgeVector = dictionary[currentAge];
                 }
                 else
                 {
-                    SortedDictionary<double, double> currentAgeVector = dictionary[dictionaryAge];
-                    double factor = age / (previousAge + dictionaryAge);
-                    return CreateInterpolatedAgeVector (factor, previousAgeVector, currentAgeVector);
+                    SortedDictionary<double, double> currentAgeVector = dictionary[currentAge];
+                    return CreateInterpolatedAgeVector (previousAge, currentAge, ageToFindVectorFor, previousAgeVector, currentAgeVector);
                 }
             }
-            /*
-    loop through input dates to find the 2 map values we are between (age vectors)
-    interpolate between values to create new series of percentile values matching age
-             */
-            return null;
+            throw new Exception ("Could not find age vector for: " + ageToFindVectorFor);
+        }
+
+        /// <summary>
+        /// Look for an exact match of our measurement attribute value (length or weight) in the passed-in percentile
+        /// vector.  If no exact match is found, interpolate between bounding values to get the percentile for 
+        /// this passed-in measurement attribute value.
+        /// </summary>
+        private static double FindPercentileInAgeVector(double value, SortedDictionary<double, double> percentileVector)
+        {
+            double previousPercentile = 0;
+            double previousValue = 0;
+            foreach (double currentPercentile in percentileVector.Keys)
+            {
+                double currentValue = percentileVector[currentPercentile];
+                if (value == currentValue)
+                {
+                    return currentPercentile;
+                }
+                else if (currentValue < value)
+                {
+                    previousPercentile = currentPercentile;
+                    previousValue = currentValue;
+                }
+                else
+                {
+                    return Interpolator.Interpolate (previousValue, previousPercentile, currentValue, currentPercentile, value);
+                }
+            }
+            throw new Exception ("Could not find percentile for: " + value);
         }
 
         static void Main(string[] args)
@@ -168,18 +194,17 @@ The third element should be the weight in kg.";
                 {
                     if (measurement.Length.HasValue)
                     {
-                        FindAgeVectorInDictionary (measurement.Length.Value, LengthPerAge);
+                        SortedDictionary<double, double> percentileVector = FindAgeVectorInDictionary (measurement.Age, LengthPerAge);
+                        double percentile = FindPercentileInAgeVector (measurement.Length.Value, percentileVector);
+                        Console.WriteLine ("Age {0} Length {1} Percentile {2}", measurement.Age, measurement.Length, percentile);
                     }
                     if (measurement.Weight.HasValue)
                     {
-                        FindAgeVectorInDictionary (measurement.Weight.Value, WeightPerAge);
+                        SortedDictionary<double, double> percentileVector = FindAgeVectorInDictionary (measurement.Age, WeightPerAge);
+                        double percentile = FindPercentileInAgeVector (measurement.Weight.Value, percentileVector);
+                        Console.WriteLine ("Age {0} Weight {1} Percentile {2}", measurement.Age, measurement.Weight, percentile);
                     }
                 }
-
-                /*
-    loop through interpolated age vector to find the 2 map values we are between (percentiles)
-    calculate percentile for input
-                 */
             }
             else
             {
