@@ -88,6 +88,9 @@
     <Compile Include="Interfaces\IVector.cs" />
     <Compile Include="Interfaces\IVectorAggregate.cs" />
     <Compile Include="Interfaces\IWifi.cs" />
+    <Compile Include="Interfaces\IInterpolator.cs" />
+    <Compile Include="Interpolation\InterpolationFactory.cs" />
+    <Compile Include="Interpolation\LinearInterpolator.cs" />
     <Compile Include="Net\Bluetooth\Bluetools.cs" />
     <Compile Include="CmdLine.cs" />
     <Compile Include="Data\ColumnOrdinalMapBase.cs" />
@@ -120,7 +123,6 @@
     <Compile Include="CmdLineParser\StringEnumerator.cs" />
     <Compile Include="CmdLineParser\ValueContainer.cs" />
     <Compile Include="Interfaces\IBluetooth.cs" />
-    <Compile Include="Interfaces\ITuple.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="JcwEventArgs.cs" />
     <Compile Include="JcwStyle.cs" />
@@ -136,7 +138,6 @@
     <Compile Include="Report\JcwTabularReport.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TwoTuple.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="VectorAggregate.cs" />
